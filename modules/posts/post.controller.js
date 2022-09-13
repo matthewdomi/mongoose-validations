@@ -16,5 +16,24 @@ exports.createPost = async (req, res) => {
     });
     res.status(201).json({ post })
 
-}
+};
 
+
+exports.getSinglePost = async(req, res) =>{
+    const {postId}=req.params;
+    const post = await Post.findById(postId);
+    res.status(200).json({post})
+};
+
+exports.updatePost = async (req, res) =>{
+    const {postId} = req.params;
+    const post = await Post.findByIdAndUpdate(postId, {...res.body}, {new :true});
+    res.status(200).json({post});
+};
+
+
+exports.deletePost = async (req, res) =>{
+    const {postId} =req.params;
+    await Post.findByIdAndDelete(postId)
+    res.Status(200).json({msg: "Post Deleted Succesfully."})
+};

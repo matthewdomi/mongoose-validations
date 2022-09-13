@@ -3,12 +3,12 @@ const { Schema, model } = require("mongoose");
 const postSchema = new Schema({
     title: {
         type: String,
-        require: true,
+        required: true,
         minLength: 5,
     },
     body: {
         type: String,
-        require: true,
+        required: true,   
         minLength: 15,
     },
     published: {
